@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Start Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    </head>
+    <body>
+        <h1>Ramdon User Generador</h1>
+            <h2>Consumiendo API publica</h2>
+        <div class="container my-5 text-center">
+            
+            <button onclick="traer()" class="btn btn-danger w-100">Obtener</button>
+            <div id="contenido" class="mt-5">
+                
+                
+            </div>
+        </div>
+        <script>
+             var contenido=document.querySelector("#contenido");
+
+function traer(){
+    fetch('https://randomuser.me/api/')
+            .then(rest=>rest.json())
+            .then(data=>{
+               
+      contenido.innerHTML=`<img src="${data.results[0].picture.large}" width="100px" class="img-fluid rounded-circle">
+      <p>Nombre: ${data.results[0].name.last}</p>`;
+            
+             
+    });
+
+    
+}
+
+        </script>
+    </body>
+    
+</html>
